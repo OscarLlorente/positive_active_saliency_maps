@@ -6,7 +6,7 @@ from torch.utils.tensorboard import SummaryWriter
 # other libraries
 import os
 from tqdm.auto import tqdm
-from typing import Dict, Union, Literal
+from typing import Union, Literal
 
 # own modules
 from src.utils import load_data, set_seed
@@ -23,7 +23,7 @@ set_seed(42)
 torch.set_num_threads(8)
 
 # static variables
-DATA_PATH: Dict[str, str] = {
+DATA_PATH: dict[str, str] = {
     "mnist": "data/mnist",
     "cifar10": "data/cifar10",
     "imagenette": "data/imagenette",
@@ -56,7 +56,7 @@ def main() -> None:
 
     # load data
     train_data, val_data = load_data(
-        dataset, DATA_PATH[dataset], batch_size=128, num_workers=4
+        dataset, f"{DATA_PATH[dataset]}/raw", batch_size=128, num_workers=4
     )
 
     # define number of channels

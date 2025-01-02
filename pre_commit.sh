@@ -1,2 +1,4 @@
-black .
-mypy --cache-dir=/dev/null .
+black --check .
+flake8 .
+mypy .
+pylint .

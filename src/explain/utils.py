@@ -51,3 +51,31 @@ def format_image(image: torch.Tensor) -> np.ndarray:
     image_numpy: np.ndarray = torch.swapaxes(image, 0, 1).detach().cpu().numpy()
 
     return image_numpy
+
+
+def valid_method(subs_value: int, method_name: str) -> bool:
+    """
+    This function checks is a method is valid for a certain subs value.
+
+    Args:
+        subs_value: should be 0 or 1.
+        method_name: name of the method. Should be all lowercase with
+            underscore symbol instead of white spaces.
+
+    Returns:
+        bool indicating if the method is valid or not.
+    """
+
+    # ignore negative and actives for 0 subs
+    if subs_value == 0 and (
+        method_name == "negative_saliency_map" or method_name == "inactive_saliency_map"
+    ):
+        return False
+
+    # ignore positive and actives for 1 subs
+    if subs_value == 1 and (
+        method_name == "positive_saliency_map" or method_name == "active_saliency_map"
+    ):
+        return False
+
+    return True
