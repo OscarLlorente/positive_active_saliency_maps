@@ -193,10 +193,14 @@ def get_deletion_curves(
                 auc_results[0][method_index],
                 auc_results[1][method_index],
             ]
+            
+            # increment
+            method_index += 1
 
         # save csv
         df.to_csv(
-            f"{visualizations_path}/{dataset}/{model_type}_{pretrained}/" f"aucs.csv",
+            f"{visualizations_path}/{dataset}/{model_type}_{pretrained}/"
+            f"{subs_value}.csv",
             float_format="%.3f",
         )
 

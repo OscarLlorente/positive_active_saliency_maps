@@ -73,7 +73,7 @@ def main() -> None:
 
     # hyperparameters
     dataset: Literal["mnist", "cifar10", "imagenette"] = "mnist"
-    model_type: Literal["cnn", "resnet18", "convnext"] = "resnet18"
+    model_type: Literal["cnn", "resnet18", "convnext"] = "cnn"
     pretrained: bool = False
 
     # load model
